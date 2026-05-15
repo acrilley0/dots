@@ -1,4 +1,6 @@
 require("config.lazy")
+require("config.keymaps")
+require("config.options")
 
 vim.lsp.config("clangd", {
   flags = {}
@@ -7,13 +9,13 @@ vim.lsp.enable({"clangd"})
 
 vim.cmd("colorscheme everforest")
 
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', {silent = true})
-
 -- Keeps the transparency settings of the terminal
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" }) -- Non-current windows
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+
+vim.diagnostic.config({ virtual_text = true })
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { '<filetype>' },
@@ -27,10 +29,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "*",
+  -- pattern = { "cpp", "hpp" },
   callback = function()
-    vim.bo.shiftwidth = 2
-    vim.bo.tabstop = 2
-    vim.bo.expandtab = true
+    vim.opt.shiftwidth = 2
+    vim.opt.tabstop = 2
+    vim.opt.expandtab = true
   end,
 })

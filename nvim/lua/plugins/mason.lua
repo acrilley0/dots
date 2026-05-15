@@ -33,7 +33,7 @@ return {
 	      callback = function(ev)
 		      vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-    		      local opts = { buffer = ev.buf }
+          local opts = { buffer = ev.buf }
 		      vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 	      end
       })

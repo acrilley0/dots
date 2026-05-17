@@ -8,6 +8,15 @@ vim.lsp.config("clangd", {
 vim.lsp.enable({"clangd"})
 
 vim.cmd("colorscheme everforest")
+vim.api.nvim_set_hl(0, 'LineNr', { fg = '#bababa' , bold = true })
+vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#bababa' , bold = true })
+vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#bababa' , bold = true })
+
+vim.api.nvim_set_hl(0, "BufferLineFill", { bg = "NONE", ctermbg = "NONE" })
+vim.api.nvim_set_hl(0, "BufferLineBackground", { bg = "NONE", ctermbg = "NONE" })
+vim.api.nvim_set_hl(0, "BufferLineBufferSelected", { bg = "NONE", ctermbg = "NONE" })
+vim.api.nvim_set_hl(0, "BufferLineSeparator", { bg = "NONE", ctermbg = "NONE" })
+vim.api.nvim_set_hl(0, "BufferLineSeparatorSelected", { bg = "NONE", ctermbg = "NONE" })
 
 -- Keeps the transparency settings of the terminal
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })

@@ -1,22 +1,6 @@
 return {
   "ibhagwan/fzf-lua",
-  -- optional for icon support
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  -- or if using mini.icons/mini.nvim
-  -- dependencies = { "nvim-mini/mini.icons" },
-  ---@module "fzf-lua"
-  ---@type fzf-lua.Config|{}
-  ---@diagnostic disable: missing-fields
-  opts = {},
-  ---@diagnostic enable: missing-fields
-  keys = {
-    {
-      "<leader>f", function() require('fzf-lua').files() end,
-    },
-    {
-      "<leader>g", function() require('fzf-lua').grep_project() end,
-    },
-  },
   config = function()
     require('fzf-lua').setup({
       -- Global window options
@@ -38,5 +22,10 @@ return {
         rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
       },
     })
+
+    local fzf = require('fzf-lua')
+    vim.keymap.set('n', '<leader>f', function() fzf.files() end)
+    vim.keymap.set('n', '<leader>g', function() fzf.grep_project() end)
+    vim.keymap.set('n', 'gr', function() fzf.lsp_references() end)
   end,
 }

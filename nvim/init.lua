@@ -7,7 +7,7 @@ vim.lsp.config("clangd", {
 })
 vim.lsp.enable({"clangd"})
 
-vim.cmd("colorscheme everforest")
+vim.cmd("colorscheme gruvbox-material")
 vim.api.nvim_set_hl(0, 'LineNr', { fg = '#bababa' , bold = true })
 vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#bababa' , bold = true })
 vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#bababa' , bold = true })

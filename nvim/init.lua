@@ -45,3 +45,16 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt.expandtab = true
   end,
 })
+
+-- Keeps the transparency of the window when changing colorscheme while in neovim
+local group = vim.api.nvim_create_augroup("TransparentBg", { clear = true })
+vim.api.nvim_create_autocmd("ColorScheme", {
+  group = group,
+  pattern = "*",
+  callback = function()
+    vim.api.nvim_set_hl(0, "Normal", { bg = "NONE", ctermbg = "NONE" })
+    vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE", ctermbg = "NONE" })
+    vim.api.nvim_set_hl(0, "NonText", { bg = "NONE", ctermbg = "NONE" })
+    vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE", ctermbg = "NONE" })
+  end,
+})

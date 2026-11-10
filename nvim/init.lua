@@ -3,7 +3,9 @@ require("config.keymaps")
 require("config.options")
 
 vim.lsp.config("clangd", {
-  flags = {}
+  init_options = {
+    fallbackFlags = { "-std=c++23" },
+  },
 })
 vim.lsp.enable({"clangd"})
 

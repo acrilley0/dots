@@ -9,3 +9,5 @@ vim.opt.cinoptions:append("l1")
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.termguicolors = true
+
+vim.opt.undofile = true

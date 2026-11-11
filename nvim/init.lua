@@ -1,6 +1,7 @@
 require("config.lazy")
 require("config.keymaps")
 require("config.options")
+require("config.autocmds")
 
 vim.lsp.config("clangd", {
   init_options = {
@@ -27,26 +28,6 @@ vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" }) -- Non-current windows
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 
 vim.diagnostic.config({ virtual_text = true })
-
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { '<filetype>' },
-  callback = function() vim.treesitter.start() end,
-})
-
-vim.api.nvim_create_autocmd("BufEnter", {
-  callback = function()
-    vim.opt.formatoptions:remove({ "c", "r", "o" })
-  end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  -- pattern = { "cpp", "hpp" },
-  callback = function()
-    vim.opt.shiftwidth = 2
-    vim.opt.tabstop = 2
-    vim.opt.expandtab = true
-  end,
-})
 
 -- Keeps the transparency of the window when changing colorscheme while in neovim
 local group = vim.api.nvim_create_augroup("TransparentBg", { clear = true })
